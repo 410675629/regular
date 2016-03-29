@@ -34,31 +34,31 @@
     </script>
     
     <script>
-    var Modal = Regular.extend({
-      template: '#modal',
-      init: function(){
-        if(!this.$parent) this.inject(document.body)
-      },
-      close: function(){
-        this.$emit('close');
-        this.destroy();
-      },
-      confirm: function(){
-        this.$emit('confirm', this.data);
-        this.destroy();
-      }
-    });
+      var Modal = Regular.extend({
+        template: '#modal',
+        init: function(){
+          if(!this.$parent) this.inject(document.body)
+        },
+        close: function(){
+          this.$emit('close');
+          this.destroy();
+        },
+        confirm: function(){
+          this.$emit('confirm', this.data);
+          this.destroy();
+        }
+      });
 
-    // 直接调用
-    var modal = new Modal({
-      data: {
-        content: '<input type="email" class="form-control" r-model={email} on-enter={this.confirm()}>',
-        title: 'confirm your email'
-      }
-    });
-    modal.$on('confirm', function(data){
-      console.log(data.email)
-    });
+      // 直接调用
+      var modal = new Modal({
+        data: {
+          content: '<input type="email" class="form-control" r-model={email} on-enter={this.confirm()}>',
+          title: 'confirm your email'
+        }
+      });
+      modal.$on('confirm', function(data){
+        console.log(data.email);
+      });
     </script>
   </body>
 </html>
